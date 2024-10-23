@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application' // Add this if you want to run the application easily
 }
 
 group = 'org.launchcode'
@@ -10,10 +11,22 @@ repositories {
 }
 
 dependencies {
+    // JUnit 5 for testing
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // OkHttp - HTTP client for making API calls (optional)
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+
+    // JSON parsing (optional, useful if you use APIs returning JSON)
+    implementation 'org.json:json:20220320'
 }
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    // Specify the main class for the application
+    mainClass = 'com.example.clock.ClockApp'
 }
